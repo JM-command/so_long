@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jm <jm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoelho- <jcoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:28:34 by jcoelho-          #+#    #+#             */
-/*   Updated: 2022/07/25 11:56:00 by jm               ###   ########.fr       */
+/*   Updated: 2022/08/03 16:38:38 by jcoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	main(int argc, char **argv)
 	t_data	*data;
 
 	data = (t_data *)ft_calloc(1, sizeof(t_data));
-	data->mlx_ptr = mlx_init();
 	malloc_struct(data, argc, argv);
+	data->mlx_ptr = mlx_init();
 	data->win_x = (data->map.width - 1) * IMG_RES;
 	data->win_y = data->map.height * IMG_RES;
 	data->win_ptr = mlx_new_window(data->mlx_ptr,
