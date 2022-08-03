@@ -6,7 +6,7 @@
 /*   By: jm <jm@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:56:53 by jcoelho-          #+#    #+#             */
-/*   Updated: 2022/07/22 15:43:40 by jm               ###   ########.fr       */
+/*   Updated: 2022/08/03 17:04:14 by jm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	malloc_map(t_data *data, char *path)
 	if (fd < 0 || read(fd, NULL, 0) == -1)
 		send_error(data, "Argument not map (please use <example>.ber).");
 	buffer = get_next_line(fd);
+	if (buffer == NULL)
+		send_error(data, "Map empty.");
 	data->map.width = ft_strlen(buffer);
 	while (buffer)
 	{
@@ -35,8 +37,6 @@ int	malloc_map(t_data *data, char *path)
 		buffer = get_next_line(fd);
 		data->map.height += 1;
 	}
-	data->map.map = (char **)ft_calloc(data->map.height, sizeof(char *));
 	close(fd);
-	parse_map(data, path);
-	return (MLX_SSUCCESS);
+	return (parse_map(data, path));
 }
